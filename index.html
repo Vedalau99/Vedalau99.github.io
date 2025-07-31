@@ -45,10 +45,11 @@
         }
 
         .header-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 2rem;
+            display: flex;
+            flex-direction: column;
             align-items: center;
+            text-align: center;
+            gap: 2rem;
             position: relative;
             z-index: 2;
         }
@@ -75,7 +76,9 @@
             object-fit: cover;
         }
 
-        .header-info h1 {
+        .header-info {
+            text-align: center;
+        }
             font-size: 3rem;
             margin-bottom: 0.5rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
@@ -93,6 +96,7 @@
             flex-wrap: wrap;
             gap: 1rem;
             margin-top: 1rem;
+            justify-content: center;
         }
 
         .contact-item {
