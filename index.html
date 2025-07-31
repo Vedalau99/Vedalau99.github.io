@@ -45,7 +45,10 @@
         }
 
         .header-content {
-            text-align: center;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            align-items: center;
             position: relative;
             z-index: 2;
         }
@@ -76,7 +79,6 @@
             font-size: 3rem;
             margin-bottom: 0.5rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            text-align: center;
         }
 
         .header-info h2 {
@@ -84,9 +86,6 @@
             font-weight: 300;
             margin-bottom: 1rem;
             opacity: 0.9;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 1rem auto;
         }
 
         .contact-info {
@@ -352,14 +351,10 @@
         }
 
         .contact-grid {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .contact-info-section {
-            max-width: 600px;
-            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            align-items: start;
         }
 
         .contact-info-section h3 {
@@ -637,19 +632,20 @@
                     </div>
                 </div>
 
-                <div class="project-card" onclick="openProject('https://github.com/Vedalau99/aws-serverless-browser')">
+                <div class="project-card" onclick="openProject('https://github.com/Vedalau99/Orpheus')">
                     <div class="project-header">
-                        <h3>AWS Serverless Web App</h3>
-                        <p>Static Website with Serverless Backend</p>
+                        <h3>Orpheus</h3>
+                        <p>Cloud Infrastructure Monitoring & Analytics Platform</p>
                     </div>
                     <div class="project-content">
                         <ul>
-                            <li>Built and deployed a static website using Amazon S3</li>
-                            <li>Integrated with API Gateway and AWS Lambda to process user submissions</li>
-                            <li>Configured DynamoDB for scalable data storage</li>
-                            <li>Managed access via IAM roles and used CloudWatch Logs for monitoring</li>
+                            <li>Built a comprehensive monitoring platform with Python for real-time infrastructure analytics</li>
+                            <li>Integrated AWS CloudWatch for centralized logging and performance monitoring</li>
+                            <li>Implemented load balancer configuration for high availability and traffic distribution</li>
+                            <li>Automated infrastructure provisioning and deployment using Terraform IaC</li>
+                            <li>Established CI/CD pipeline with GitHub Actions for seamless deployment automation</li>
                         </ul>
-                        <a href="https://github.com/Vedalau99/aws-serveless-browser" class="project-link" target="_blank">View Project</a>
+                        <a href="https://github.com/Vedalau99/Orpheus" class="project-link" target="_blank">View Project</a>
                     </div>
                 </div>
             </div>
@@ -672,6 +668,7 @@
                         <span class="skill-tag">CloudWatch</span>
                         <span class="skill-tag">Route53</span>
                         <span class="skill-tag">ECR</span>
+                        <span class="skill-tag">Load Balancer</span>
                     </div>
                 </div>
                 <div class="skill-category">
@@ -743,44 +740,42 @@
     <section id="contact">
         <div class="container">
             <h2 class="section-title" style="color: var(--gold-accent);">Get In Touch</h2>
-            <div class="contact-grid">
-                <div class="contact-info-section">
-                    <h3>Contact Information</h3>
-                    <div class="contact-details">
-                        <div class="contact-detail">
-                            <i>📞</i>
-                            <div>
-                                <strong>Phone</strong><br>
-                                <a href="tel:+919390313075">+91 9390313075</a>
-                            </div>
+            <div class="contact-info-section">
+                <h3>Contact Information</h3>
+                <div class="contact-details">
+                    <div class="contact-detail">
+                        <i>📞</i>
+                        <div>
+                            <strong>Phone</strong><br>
+                            <a href="tel:+919390313075">+91 9390313075</a>
                         </div>
-                        <div class="contact-detail">
-                            <i>✉️</i>
-                            <div>
-                                <strong>Email</strong><br>
-                                <a href="mailto:uma.vedala09@gmail.com">uma.vedala09@gmail.com</a>
-                            </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i>✉️</i>
+                        <div>
+                            <strong>Email</strong><br>
+                            <a href="mailto:uma.vedala09@gmail.com">uma.vedala09@gmail.com</a>
                         </div>
-                        <div class="contact-detail">
-                            <i>📍</i>
-                            <div>
-                                <strong>Location</strong><br>
-                                Hyderabad, India
-                            </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i>📍</i>
+                        <div>
+                            <strong>Location</strong><br>
+                            Hyderabad, India
                         </div>
-                        <div class="contact-detail">
-                            <i>💼</i>
-                            <div>
-                                <strong>LinkedIn</strong><br>
-                                <a href="https://www.linkedin.com/in/umasankar-vedala-435425234" target="_blank">Connect with me</a>
-                            </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i>💼</i>
+                        <div>
+                            <strong>LinkedIn</strong><br>
+                            <a href="https://www.linkedin.com/in/umasankar-vedala-435425234" target="_blank">Connect with me</a>
                         </div>
-                        <div class="contact-detail">
-                            <i>💻</i>
-                            <div>
-                                <strong>GitHub</strong><br>
-                                <a href="https://github.com/Vedalau99" target="_blank">View my projects</a>
-                            </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i>💻</i>
+                        <div>
+                            <strong>GitHub</strong><br>
+                            <a href="https://github.com/Vedalau99" target="_blank">View my projects</a>
                         </div>
                     </div>
                 </div>
@@ -796,30 +791,6 @@
     </footer>
 
     <script>
-        // Contact form handler
-        function handleFormSubmit(event) {
-            const submitBtn = event.target.querySelector('.submit-btn');
-            const originalText = submitBtn.innerHTML;
-            
-            // Show loading state
-            submitBtn.innerHTML = '⏳ Sending...';
-            submitBtn.disabled = true;
-            
-            // Let the form submit naturally to Formspree
-            // The success/error handling will be done by Formspree's redirect
-            
-            setTimeout(() => {
-                submitBtn.innerHTML = '✅ Message Sent!';
-                submitBtn.style.background = '#27AE60';
-                
-                setTimeout(() => {
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.style.background = 'var(--gold-accent)';
-                    submitBtn.disabled = false;
-                    event.target.reset();
-                }, 3000);
-            }, 1000);
-        }
         // Smooth scrolling for navigation links
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function(e) {
