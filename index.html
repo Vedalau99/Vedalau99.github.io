@@ -20,6 +20,7 @@
             --light-grey: #7F8C8D;
             --white: #FFFFFF;
             --section-bg: #F8F9FA;
+            --success-color: #27AE60;
         }
 
         body {
@@ -134,6 +135,7 @@
             display: flex;
             list-style: none;
             gap: 2rem;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
@@ -196,6 +198,144 @@
             font-size: 1.1rem;
             line-height: 1.8;
             color: var(--light-grey);
+        }
+
+        /* Experience Timeline */
+        .experience-timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--primary-color);
+            transform: translateX(-50%);
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 3rem;
+            width: 100%;
+        }
+
+        .experience-item:nth-child(odd) .experience-content {
+            margin-left: 0;
+            margin-right: 50%;
+            padding-right: 2rem;
+            text-align: right;
+        }
+
+        .experience-item:nth-child(even) .experience-content {
+            margin-left: 50%;
+            margin-right: 0;
+            padding-left: 2rem;
+            text-align: left;
+        }
+
+        .experience-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .experience-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .experience-item:nth-child(odd) .experience-content::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -10px;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-left-color: var(--white);
+        }
+
+        .experience-item:nth-child(even) .experience-content::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -10px;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-right-color: var(--white);
+        }
+
+        .experience-date {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--gold-accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            z-index: 10;
+            white-space: nowrap;
+        }
+
+        .experience-role {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-company {
+            color: var(--gold-accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .experience-description {
+            color: var(--light-grey);
+            line-height: 1.6;
+        }
+
+        .experience-description ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .experience-description li {
+            padding: 0.3rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .experience-description li::before {
+            content: '▶';
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .achievement-badge {
+            display: inline-block;
+            background: var(--success-color);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin: 0.2rem 0.2rem 0 0;
+            font-weight: 500;
         }
 
         /* Projects Grid */
@@ -405,66 +545,6 @@
             color: var(--gold-accent);
         }
 
-        .contact-form {
-            background: rgba(255,255,255,0.1);
-            padding: 2rem;
-            border-radius: 15px;
-        }
-
-        .contact-form h3 {
-            color: var(--gold-accent);
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--gold-accent);
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: none;
-            border-radius: 8px;
-            background: rgba(255,255,255,0.9);
-            color: var(--dark-grey);
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            background: white;
-            box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.3);
-        }
-
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 1rem 2rem;
-            background: var(--gold-accent);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
         /* Footer */
         footer {
             background: var(--accent-color);
@@ -492,7 +572,6 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             .header-content {
-                grid-template-columns: 1fr;
                 text-align: center;
             }
 
@@ -503,7 +582,12 @@
             .nav-links {
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 1rem;
+                gap: 0.5rem;
+            }
+
+            .nav-links a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
             }
 
             .projects-grid {
@@ -513,6 +597,32 @@
             .contact-info {
                 justify-content: center;
             }
+
+            /* Mobile Timeline */
+            .experience-timeline::before {
+                left: 20px;
+            }
+
+            .experience-item:nth-child(odd) .experience-content,
+            .experience-item:nth-child(even) .experience-content {
+                margin-left: 50px;
+                margin-right: 0;
+                padding-left: 2rem;
+                padding-right: 1rem;
+                text-align: left;
+            }
+
+            .experience-item:nth-child(odd) .experience-content::after {
+                left: -10px;
+                right: auto;
+                border-left-color: transparent;
+                border-right-color: var(--white);
+            }
+
+            .experience-date {
+                left: 20px;
+                transform: translate(-50%, -50%);
+            }
         }
 
         /* Scroll Progress Bar */
@@ -521,7 +631,7 @@
             top: 0;
             left: 0;
             height: 4px;
-            background: var(--primary-color);
+            background: var(--gold-accent);
             z-index: 9999;
             transition: width 0.25s ease;
         }
@@ -535,7 +645,7 @@
             <div class="header-content">
                 <div class="profile-section">
                     <div class="profile-img">
-                        <!-- Profile image will go here -->
+                        <i class="fas fa-user-tie"></i>
                     </div>
                 </div>
                 <div class="header-info">
@@ -550,6 +660,7 @@
         <div class="nav-container">
             <ul class="nav-links">
                 <li><a href="#summary" class="nav-link">Summary</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#education" class="nav-link">Education</a></li>
@@ -563,7 +674,60 @@
         <div class="container">
             <h2 class="section-title">Professional Summary</h2>
             <div class="summary-content">
-                <p>Certified AWS Solutions Architect with strong hands-on experience in designing scalable cloud architectures, automating infrastructure with Terraform, deploying Dockerized applications, and implementing CI/CD pipelines using GitHub Actions. Skilled in serverless design, monitoring with CloudWatch, and delivering reliable cloud-native systems through DevOps best practices. Passionate about driving DevOps culture, enhancing operational efficiency, and enabling rapid software delivery through automation and cloud-native practices.</p>
+                <p>AWS Certified Solutions Architect with 2+ years of TCS quality assurance experience and practical knowledge in designing scalable cloud architectures, automating CI/CD pipelines with GitHub Actions, and deploying Dockerized applications on AWS. Proficient in Terraform, Kubernetes, and Python scripting, with a proven track record of developing cloud-native solutions such as real-time monitoring dashboards and AI-powered anomaly detection tools. Skilled in enterprise application migration, infrastructure modernization, and data analysis, as well as promoting operational efficiency and digital transformation using DevOps best practices.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <div class="experience-date">Nov 2024 - Present</div>
+                    <div class="experience-content">
+                        <div class="experience-role">Freelance DevOps Engineer</div>
+                        <div class="experience-company">Hyderabad, India</div>
+                        <div class="experience-description">
+                            <ul>
+                                <li>Skydock, a real-time AWS CloudWatch dashboard built with Flask and Docker and deployed through GitHub Actions, achieved <span class="achievement-badge">99.9% uptime</span> and reduced monitoring latency by <span class="achievement-badge">18%</span></li>
+                                <li>InfraVista's AWS infrastructure was automated using Terraform, which reduced setup time by <span class="achievement-badge">50%</span> and produced visual architecture diagrams</li>
+                                <li>Developed Kairoz, a Jenkins-based Kubernetes CI/CD pipeline on GKE that streamlines multi-container app deployments with <span class="achievement-badge">30% faster</span> build cycles</li>
+                                <li>Orpheus, an AI-powered log anomaly detection tool built with AWS Lambda and Grafana, improves observability and recommends automatic correction</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-date">Apr 2023 - Jun 2023</div>
+                    <div class="experience-content">
+                        <div class="experience-role">Data Analyst Intern</div>
+                        <div class="experience-company">Oeson | Birmingham, UK</div>
+                        <div class="experience-description">
+                            <ul>
+                                <li>Created Python scripts to automate data processing, increasing business intelligence dashboard reporting efficiency by <span class="achievement-badge">20%</span></li>
+                                <li>Analysed and validated data using SQL, assisting with the establishment of data pipelines similar to AWS CloudWatch log processing</li>
+                                <li>Identified automation opportunities and contributed to process improvements that influenced CI/CD workflow design</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-date">Oct 2019 - Apr 2021</div>
+                    <div class="experience-content">
+                        <div class="experience-role">Quality Analyst</div>
+                        <div class="experience-company">Tata Consultancy Services | Hyderabad, India</div>
+                        <div class="experience-description">
+                            <ul>
+                                <li>Achieved <span class="achievement-badge">100% quality results</span> consecutively for period of 3 months</li>
+                                <li>Played pivotal role in maintaining and improving overall quality of outsourced processes, contributing to client SLA satisfaction and business success</li>
+                                <li>Conducted comprehensive reviews of transactions and activities to ensure adherence to established policies, procedures, and regulatory requirements</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -606,34 +770,17 @@
                     </div>
                 </div>
 
-                <div class="project-card" onclick="openProject('https://partyrock.aws/u/Vedalau/qOonZSudd/Learn-Cloud-AI')">
-                    <div class="project-header">
-                        <h3>Learn Cloud AI Web App</h3>
-                        <p>Educational Cloud Learning Platform</p>
-                    </div>
-                    <div class="project-content">
-                        <ul>
-                            <li>Designed an educational web platform integrated with AWS Party Rock AI</li>
-                            <li>Implemented a step-by-step AI assistant to guide users through AWS learning paths</li>
-                            <li>Demonstrated use of cloud-native services to build a serverless environment</li>
-                            <li>Created interactive troubleshooting guides for cloud learning</li>
-                        </ul>
-                        <a href="https://partyrock.aws/u/Vedalau/qOonZSudd/Learn-Cloud-AI" class="project-link" target="_blank">View Project</a>
-                    </div>
-                </div>
-
                 <div class="project-card" onclick="openProject('https://github.com/Vedalau99/Kairoz')">
                     <div class="project-header">
                         <h3>Kairoz</h3>
-                        <p>Multi-Cloud CI/CD Platform</p>
+                        <p>Kubernetes CI/CD Pipeline with Jenkins & GKE</p>
                     </div>
                     <div class="project-content">
                         <ul>
-                            <li>Developed a multi-cloud project integrating AWS and GCP services</li>
-                            <li>Implemented Jenkins CI/CD pipeline on AWS EC2 instance for automated deployments</li>
-                            <li>Deployed Docker containers and Kubernetes clusters in Google Cloud Platform</li>
-                            <li>Established secure networking between AWS and GCP using service account JSON authentication</li>
-                            <li>Demonstrates expertise in multi-cloud architecture, orchestration, and cross-platform automation</li>
+                            <li>Orchestrated a fully automated CI/CD pipeline using Jenkins hosted on AWS EC2 to deploy multi-container apps to GKE Autopilot</li>
+                            <li>Used Docker and GCP container Registry to manage and deploy container images</li>
+                            <li>Integrated IAM, kubectl, and g cloud authentication for seamless infrastructure-level deployments</li>
+                            <li>Implemented build and deployment workflows triggered via Jenkins</li>
                         </ul>
                         <a href="https://github.com/Vedalau99/Kairoz" class="project-link" target="_blank">View Project</a>
                     </div>
@@ -642,15 +789,14 @@
                 <div class="project-card" onclick="openProject('https://github.com/Vedalau99/Orpheus')">
                     <div class="project-header">
                         <h3>Orpheus</h3>
-                        <p>Cloud Infrastructure Monitoring & Analytics Platform</p>
+                        <p>AI-powered Log Anomaly Detection Tool</p>
                     </div>
                     <div class="project-content">
                         <ul>
-                            <li>Built a comprehensive monitoring platform with Python for real-time infrastructure analytics</li>
-                            <li>Integrated AWS CloudWatch for centralized logging and performance monitoring</li>
-                            <li>Implemented load balancer configuration for high availability and traffic distribution</li>
-                            <li>Automated infrastructure provisioning and deployment using Terraform IaC</li>
-                            <li>Established CI/CD pipeline with GitHub Actions for seamless deployment automation</li>
+                            <li>Developed an AI-enhanced cloud monitoring tool for detecting system anomalies in real-time using CloudWatch logs</li>
+                            <li>Integrates with Grafana and AWS Lambda to visualize and respond to critical log patterns</li>
+                            <li>Uses pre-trained AI logic to suggest automated remediation steps (e.g., scale-up)</li>
+                            <li>Focused on intelligent observability and operational resilience</li>
                         </ul>
                         <a href="https://github.com/Vedalau99/Orpheus" class="project-link" target="_blank">View Project</a>
                     </div>
@@ -675,7 +821,6 @@
                         <span class="skill-tag">CloudWatch</span>
                         <span class="skill-tag">Route53</span>
                         <span class="skill-tag">ECR</span>
-                        <span class="skill-tag">Load Balancer</span>
                         <span class="skill-tag">Google Cloud Platform</span>
                     </div>
                 </div>
@@ -705,6 +850,24 @@
                         <span class="skill-tag">Bash</span>
                         <span class="skill-tag">Python</span>
                         <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Data & Analytics</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Excel</span>
+                        <span class="skill-tag">Data Analysis</span>
+                        <span class="skill-tag">Business Intelligence</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Architecture & Systems</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Web Services</span>
+                        <span class="skill-tag">Distributed Systems</span>
+                        <span class="skill-tag">Web Application Development</span>
+                        <span class="skill-tag">SaaS</span>
+                        <span class="skill-tag">IaaS</span>
                     </div>
                 </div>
             </div>
@@ -754,35 +917,35 @@
                 <h3>Contact Information</h3>
                 <div class="contact-details">
                     <div class="contact-detail">
-                        <i>📞</i>
+                        <i class="fas fa-phone"></i>
                         <div>
                             <strong>Phone</strong><br>
                             <a href="tel:+919390313075">+91 9390313075</a>
                         </div>
                     </div>
                     <div class="contact-detail">
-                        <i>✉️</i>
+                        <i class="fas fa-envelope"></i>
                         <div>
                             <strong>Email</strong><br>
                             <a href="mailto:uma.vedala09@gmail.com">uma.vedala09@gmail.com</a>
                         </div>
                     </div>
                     <div class="contact-detail">
-                        <i>📍</i>
+                        <i class="fas fa-map-marker-alt"></i>
                         <div>
                             <strong>Location</strong><br>
                             Hyderabad, India
                         </div>
                     </div>
                     <div class="contact-detail">
-                        <i>💼</i>
+                        <i class="fab fa-linkedin"></i>
                         <div>
                             <strong>LinkedIn</strong><br>
                             <a href="https://www.linkedin.com/in/umasankar-vedala-435425234" target="_blank">Connect with me</a>
                         </div>
                     </div>
                     <div class="contact-detail">
-                        <i>💻</i>
+                        <i class="fab fa-github"></i>
                         <div>
                             <strong>GitHub</strong><br>
                             <a href="https://github.com/Vedalau99" target="_blank">View my projects</a>
@@ -887,9 +1050,39 @@
             });
         });
 
+        // Experience timeline animation on scroll
+        const experienceObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.experience-item').forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(50px)';
+            item.style.transition = 'all 0.6s ease';
+            experienceObserver.observe(item);
+        });
+
         // Initial animations
         window.addEventListener('load', function() {
             document.querySelector('header').style.animation = 'fadeInUp 1s ease forwards';
+        });
+
+        // Achievement badge hover effects
+        document.querySelectorAll('.achievement-badge').forEach(badge => {
+            badge.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1)';
+                this.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+            });
+            
+            badge.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+                this.style.boxShadow = 'none';
+            });
         });
     </script>
 </body>
